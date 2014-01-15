@@ -16,6 +16,16 @@
   </properties>
   <dependencies>
     <dependency>
+   		<groupId>com.googlecode.cqengine</groupId>
+    	<artifactId>cqengine</artifactId>
+    	<version>1.2.6</version>
+	</dependency>
+	<dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>15.0</version>
+    </dependency>
+    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
