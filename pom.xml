@@ -8,4 +8,10 @@
   <modules>
     <module>dubpob-orm</module>
   </modules>
+  <properties>
+        <encoding>UTF-8</encoding>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+  </properties>
 </project>
