@@ -7,6 +7,8 @@
   <packaging>pom</packaging>
   <modules>
     <module>dubpob-orm</module>
+    <module>dubpob-matrix</module>
+    <module>dubpob-bird</module>
   </modules>
   <properties>
         <encoding>UTF-8</encoding>
