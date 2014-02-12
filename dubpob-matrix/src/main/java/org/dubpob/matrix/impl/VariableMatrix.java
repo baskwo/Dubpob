@@ -24,4 +24,9 @@ public class VariableMatrix extends Matrix {
 	public String getTrace() {
 		return "";
 	}
+
+	@Override
+	public int getDeterminant() {
+		return 0;
+	}
 }

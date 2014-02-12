@@ -5,6 +5,7 @@ public abstract class Matrix {
 	protected int width = 0;
 	
 	public abstract String getTrace();
+	public abstract int getDeterminant();
 
 	public int getHeight() {
 		return height;
