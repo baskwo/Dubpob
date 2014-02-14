@@ -29,4 +29,9 @@ public class VariableMatrix extends Matrix {
 	public int getDeterminant() {
 		return 0;
 	}
+
+	@Override
+	public String toString() {
+		return "";
+	}
 }

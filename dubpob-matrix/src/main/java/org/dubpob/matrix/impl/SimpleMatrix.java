@@ -53,4 +53,17 @@ public class SimpleMatrix extends Matrix {
 		}
 		return value;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		for(int i = 0; i < getHeight(); i++) {
+			builder.append("[ ");
+			for(int j = 0; j < getWidth(); j++) {
+				builder.append(matrix[i][j] + " ");
+			}
+			builder.append("]").append("\n");
+		}
+		return builder.toString();
+	}
 }

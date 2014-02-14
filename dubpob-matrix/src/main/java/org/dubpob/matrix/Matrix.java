@@ -6,6 +6,8 @@ public abstract class Matrix {
 	
 	public abstract String getTrace();
 	public abstract int getDeterminant();
+	@Override
+	public abstract String toString();
 
 	public int getHeight() {
 		return height;
