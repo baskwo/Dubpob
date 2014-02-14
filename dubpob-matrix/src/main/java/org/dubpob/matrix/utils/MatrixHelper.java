@@ -39,7 +39,7 @@ public class MatrixHelper {
 		return matrix;
 	}
 	
-	public static SimpleMatrix subtract(SimpleMatrix A, int K) {
+	public static SimpleMatrix multiply(SimpleMatrix A, int K) {
 		SimpleMatrix matrix = new SimpleMatrix(A.getHeight(), A.getWidth());
 		
 		for(int i = 0; i < A.getHeight(); i++) {
