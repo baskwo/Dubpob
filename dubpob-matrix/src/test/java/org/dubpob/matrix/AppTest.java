@@ -25,34 +25,26 @@ public class AppTest
     
     public void testApp()
     {
-    	SimpleMatrix A = new SimpleMatrix(3,3);
+    	SimpleMatrix A = new SimpleMatrix(2,2);
     	
     	A.getMatrix()[0][0] = 1;
-    	A.getMatrix()[0][1] = -1;
-    	A.getMatrix()[0][2] = 1;
+    	A.getMatrix()[0][1] = 1;
     	A.getMatrix()[1][0] = 2;
-    	A.getMatrix()[1][1] = 0;
-    	A.getMatrix()[1][2] = 4;
-    	A.getMatrix()[2][0] = 9;
-    	A.getMatrix()[2][1] = -1;
-    	A.getMatrix()[2][2] = 1;
-
+    	A.getMatrix()[1][1] = -1;
     	
-    	SimpleMatrix result = MatrixHelper.getInverse(A);
+    	SimpleMatrix B = new SimpleMatrix(2,1);
     	
-    	SimpleMatrix test = MatrixHelper.multiply(A, result);
+    	B.getMatrix()[0][0] = 5;
+    	B.getMatrix()[1][0] = 6;
     	
-    	SimpleMatrix I = new SimpleMatrix(3,3);
+    	SimpleMatrix inverse = MatrixHelper.getInverse(A);
     	
-    	I.getMatrix()[0][0] = 1;
-    	I.getMatrix()[0][1] = 0;
-    	I.getMatrix()[0][2] = 0;
-    	I.getMatrix()[1][0] = 0;
-    	I.getMatrix()[1][1] = 1;
-    	I.getMatrix()[1][2] = 0;
-    	I.getMatrix()[2][0] = 0;
-    	I.getMatrix()[2][1] = 0;
-    	I.getMatrix()[2][2] = 1;
+    	SimpleMatrix test = MatrixHelper.multiply(inverse, B);
+    	
+    	SimpleMatrix I = new SimpleMatrix(2,1);
+    	
+    	I.getMatrix()[0][0] = (float)11/3;
+    	I.getMatrix()[1][0] = (float)4/3;
     	
         assertEquals(I.toString(), test.toString());
     }
