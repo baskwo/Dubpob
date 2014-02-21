@@ -25,27 +25,35 @@ public class AppTest
     
     public void testApp()
     {
-    	SimpleMatrix A = new SimpleMatrix(2,3);
-    	SimpleMatrix B = new SimpleMatrix(3,2);
+    	SimpleMatrix A = new SimpleMatrix(3,3);
     	
     	A.getMatrix()[0][0] = 1;
-    	A.getMatrix()[0][1] = 2;
-    	A.getMatrix()[0][2] = 3;
-    	A.getMatrix()[1][0] = 4;
-    	A.getMatrix()[1][1] = 5;
-    	A.getMatrix()[1][2] = 6;
+    	A.getMatrix()[0][1] = -1;
+    	A.getMatrix()[0][2] = 1;
+    	A.getMatrix()[1][0] = 2;
+    	A.getMatrix()[1][1] = 0;
+    	A.getMatrix()[1][2] = 4;
+    	A.getMatrix()[2][0] = 9;
+    	A.getMatrix()[2][1] = -1;
+    	A.getMatrix()[2][2] = 1;
+
     	
-    	B.getMatrix()[0][0] = 7;
-    	B.getMatrix()[0][1] = 8;
-    	B.getMatrix()[1][0] = 9;
-    	B.getMatrix()[1][1] = 10;
-    	B.getMatrix()[2][0] = 11;
-    	B.getMatrix()[2][1] = 12;
+    	SimpleMatrix result = MatrixHelper.getInverse(A);
     	
-    	SimpleMatrix result = MatrixHelper.multiply(A, B);
+    	SimpleMatrix test = MatrixHelper.multiply(A, result);
     	
-    	System.out.println(result.toString());
+    	SimpleMatrix I = new SimpleMatrix(3,3);
     	
-        assertEquals(36, result.getDeterminant());
+    	I.getMatrix()[0][0] = 1;
+    	I.getMatrix()[0][1] = 0;
+    	I.getMatrix()[0][2] = 0;
+    	I.getMatrix()[1][0] = 0;
+    	I.getMatrix()[1][1] = 1;
+    	I.getMatrix()[1][2] = 0;
+    	I.getMatrix()[2][0] = 0;
+    	I.getMatrix()[2][1] = 0;
+    	I.getMatrix()[2][2] = 1;
+    	
+        assertEquals(I.toString(), test.toString());
     }
 }

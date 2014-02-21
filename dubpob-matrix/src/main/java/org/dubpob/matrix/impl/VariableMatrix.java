@@ -26,7 +26,7 @@ public class VariableMatrix extends Matrix {
 	}
 
 	@Override
-	public int getDeterminant() {
+	public float getDeterminant() {
 		return 0;
 	}
 

@@ -23,13 +23,48 @@ public class MatrixHelper {
 		return minor;
 	}
 	
+	public static SimpleMatrix getCofactors(SimpleMatrix m) {
+		SimpleMatrix cof = new SimpleMatrix(m.getHeight(), m.getWidth());
+		for(int i = 0; i < m.getHeight(); i++) {
+			for(int j = 0; j < m.getWidth(); j++) {
+				cof.getMatrix()[i][j] = (float) (Math.pow(-1, i+j)*getMinor(i,j,m).getDeterminant());
+			}
+		}
+		return cof;
+	}
+	
+	public static SimpleMatrix getAdjudant(SimpleMatrix m) {
+		SimpleMatrix adj = getAdjudantFromCofactors(getCofactors(m));
+		return adj;
+	}
+	
+	private static SimpleMatrix getAdjudantFromCofactors(SimpleMatrix m) {
+		SimpleMatrix adj = transpose(m);
+		return adj;
+	}
+	
+	public static SimpleMatrix transpose(SimpleMatrix m) {
+		SimpleMatrix transpo = new SimpleMatrix(m.getHeight(), m.getWidth());
+		for(int i = 0; i < m.getHeight(); i++) {
+			for(int j = 0; j < m.getWidth(); j++) {
+				transpo.getMatrix()[j][i] = m.getMatrix()[i][j];
+			}
+		}
+		return transpo;
+	}
+	
+	public static SimpleMatrix getInverse(SimpleMatrix m) {
+		SimpleMatrix inv = multiply(getAdjudant(m),1/m.getDeterminant());
+		return inv;
+	}
+	
 	public static SimpleMatrix multiply(SimpleMatrix A, SimpleMatrix B) {
 		if(B.getHeight() != A.getWidth())
 			return null;
 		SimpleMatrix matrix = new SimpleMatrix(A.getHeight(), B.getWidth());
 		for(int i = 0; i < matrix.getHeight(); i++) {
 			for(int j = 0; j < matrix.getWidth(); j++) {
-				int result = 0;
+				float result = 0;
 				for(int m = 0; m < A.getWidth(); m++) {
 					result += A.getMatrix()[i][m]*B.getMatrix()[m][j];
 				}
@@ -39,7 +74,7 @@ public class MatrixHelper {
 		return matrix;
 	}
 	
-	public static SimpleMatrix multiply(SimpleMatrix A, int K) {
+	public static SimpleMatrix multiply(SimpleMatrix A, float K) {
 		SimpleMatrix matrix = new SimpleMatrix(A.getHeight(), A.getWidth());
 		
 		for(int i = 0; i < A.getHeight(); i++) {
