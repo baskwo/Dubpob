@@ -1,5 +1,7 @@
 package org.dubpob.matrix;
 
+import java.util.logging.Level;
+
 import org.dubpob.matrix.impl.SimpleMatrix;
 import org.dubpob.matrix.utils.MatrixHelper;
 
@@ -26,6 +28,7 @@ public class AppTest
     @SuppressWarnings("rawtypes")
 	public void testApp()
     {
+    	System.out.println(Level.SEVERE.getName());
     	String a = "1 1\n" + 
     			   "2 -1";
     	SimpleMatrix A = new SimpleMatrix(2,2,a);

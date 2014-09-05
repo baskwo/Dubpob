@@ -3,19 +3,25 @@ package org.dubpob.orm.pojo;
 import static com.google.common.base.Throwables.propagate;
 
 import java.lang.reflect.Field;
-import java.util.Map;
 
 import org.dubpob.orm.annotations.Skip;
-import org.dubpob.orm.exceptions.EntityNotMappedException;
 
-import com.google.common.collect.Maps;
+import com.googlecode.cqengine.CQEngine;
+import com.googlecode.cqengine.IndexedCollection;
+import com.googlecode.cqengine.attribute.Attribute;
+import com.googlecode.cqengine.attribute.SimpleAttribute;
+import com.googlecode.cqengine.index.unique.UniqueIndex;
 
 public class EntityModel {
 	private Class<?> entity = null;
-	private Map<String,Metadata> metadatas = Maps.newHashMap();
+	private IndexedCollection<Metadata> metadatas = CQEngine.newInstance();
+	
+	public static final Attribute<EntityModel, Class<?>> MODEL_CLASS = new SimpleAttribute<EntityModel, Class<?>>("class") {
+        public Class<?> getValue(EntityModel model) { return model.entity; }};
 	
 	public EntityModel(Class<?> entity) {
 		this.entity = entity;
+		metadatas.addIndex(UniqueIndex.onAttribute(Metadata.META_NAME));
 	}
 	
 	public boolean buildMetadata() {
@@ -24,14 +30,8 @@ public class EntityModel {
 		for(Field field : fields) {
 			if(field.getAnnotation(Skip.class) != null)
 				continue;
-			try {
 				Metadata metadata = new Metadata(field);
-				metadatas.put(field.getName(), metadata);
-			} catch (EntityNotMappedException e) {
-				propagate(e);
-				result = false;
-				break;
-			}
+				metadatas.add(metadata);
 			
 		}
 		return result;
@@ -45,11 +45,11 @@ public class EntityModel {
 		this.entity = entity;
 	}
 
-	public Map<String,Metadata> getMetadatas() {
+	public IndexedCollection<Metadata> getMetadatas() {
 		return metadatas;
 	}
 
-	public void setMetadatas(Map<String,Metadata> metadatas) {
+	public void setMetadatas(IndexedCollection<Metadata> metadatas) {
 		this.metadatas = metadatas;
 	}
 }

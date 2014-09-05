@@ -9,6 +9,8 @@
     <module>dubpob-orm</module>
     <module>dubpob-matrix</module>
     <module>dubpob-bird</module>
+    <module>dubpob-test</module>
+    <module>dubpob-base</module>
   </modules>
   <properties>
         <encoding>UTF-8</encoding>
