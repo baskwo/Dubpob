@@ -124,14 +124,16 @@ public class SimpleBaseNumber implements IBaseNumber {
 
 	@Override
 	public void subHex(String value) {
-		// TODO Auto-generated method stub
-		
+		IBaseNumber val = new SimpleBaseNumber();
+		val.addHex(value);
+		this.value -= val.getDecValue();
 	}
 
 	@Override
 	public void subOct(long value) {
-		// TODO Auto-generated method stub
-		
+		IBaseNumber val = new SimpleBaseNumber();
+		val.addOct(value);
+		this.value -= val.getDecValue();
 	}
 
 	@Override
@@ -141,44 +143,49 @@ public class SimpleBaseNumber implements IBaseNumber {
 
 	@Override
 	public void subBin(long value) {
-		// TODO Auto-generated method stub
-		
+		IBaseNumber val = new SimpleBaseNumber();
+		val.addBin(value);
+		this.value -= val.getDecValue();
 	}
 
 	@Override
 	public void mulHex(String value) {
-		// TODO Auto-generated method stub
-		
+		IBaseNumber val = new SimpleBaseNumber();
+		val.addHex(value);
+		this.value *= val.getDecValue();
 	}
 
 	@Override
 	public void mulOct(long value) {
-		// TODO Auto-generated method stub
-		
+		IBaseNumber val = new SimpleBaseNumber();
+		val.addOct(value);
+		this.value *= val.getDecValue();
 	}
 
 	@Override
 	public void mulDec(long value) {
-		// TODO Auto-generated method stub
 		this.value *= value;
 	}
 
 	@Override
 	public void mulBin(long value) {
-		// TODO Auto-generated method stub
-		
+		IBaseNumber val = new SimpleBaseNumber();
+		val.addBin(value);
+		this.value *= val.getDecValue();
 	}
 
 	@Override
 	public void divHex(String value) {
-		// TODO Auto-generated method stub
-		
+		IBaseNumber val = new SimpleBaseNumber();
+		val.addHex(value);
+		this.value /= val.getDecValue();
 	}
 
 	@Override
 	public void divOct(long value) {
-		// TODO Auto-generated method stub
-		
+		IBaseNumber val = new SimpleBaseNumber();
+		val.addOct(value);
+		this.value /= val.getDecValue();
 	}
 
 	@Override
@@ -188,8 +195,9 @@ public class SimpleBaseNumber implements IBaseNumber {
 
 	@Override
 	public void divBin(long value) {
-		// TODO Auto-generated method stub
-		
+		IBaseNumber val = new SimpleBaseNumber();
+		val.addBin(value);
+		this.value /= val.getDecValue();
 	}
 
 	public long getValue() {

@@ -37,7 +37,6 @@ public class AppTest
     {
     	IBaseNumber number = new SimpleBaseNumber();
     	number.addHex("AF9");
-    	System.out.println(number.getDecValue());
-        assertTrue( true );
+        assertEquals(2809, number.getDecValue());
     }
 }
