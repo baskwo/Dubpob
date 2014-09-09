@@ -1,5 +1,6 @@
 package org.dubpob.base;
 
+import org.dubpob.base.impl.RealBaseNumber;
 import org.dubpob.base.impl.SimpleBaseNumber;
 
 import junit.framework.Test;
@@ -35,8 +36,22 @@ public class AppTest
      */
     public void testApp()
     {
-    	IBaseNumber number = new SimpleBaseNumber();
-    	number.addHex("AF9");
-        assertEquals(2809, number.getDecValue());
+    	RealBaseNumber firstNumber = RealBaseNumber.fromBase((byte)42);
+    	RealBaseNumber secondNumber = RealBaseNumber.fromBase((byte)11);
+    	
+    	long time = System.nanoTime();
+    	
+    	firstNumber.setDecVal(1649);
+    	secondNumber.setDecVal(50);
+    	
+    	System.out.println(firstNumber.getValue());
+    	System.out.println(secondNumber.getValue());
+    	
+    	firstNumber.mul(secondNumber);
+    	
+    	System.out.println(firstNumber.getValue());
+    	
+    	System.out.println(System.nanoTime() - time);
+        assertEquals(82450, firstNumber.getDecVal());
     }
 }
