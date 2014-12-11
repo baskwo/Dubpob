@@ -11,6 +11,7 @@
     <module>dubpob-bird</module>
     <module>dubpob-test</module>
     <module>dubpob-base</module>
+    <module>dubpob-snake</module>
   </modules>
   <properties>
         <encoding>UTF-8</encoding>

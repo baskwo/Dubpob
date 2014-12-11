@@ -1,7 +1,4 @@
-package org.dubpob.base;
-
-import org.dubpob.base.impl.RealBaseNumber;
-import org.dubpob.base.impl.SimpleBaseNumber;
+package org.dubpob.snake;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -36,13 +33,6 @@ public class AppTest
      */
     public void testApp()
     {
-    	for(int i = 2; i < 63; i++) {
-    		RealBaseNumber number = RealBaseNumber.fromBase((byte) i);
-    		number.setDecVal(954);
-    		System.out.println("Format : " + number.getFormat());
-    		System.out.println("Value : " + number.getValue());
-    	}
-    	assertTrue(true);
-        //assertEquals(82450, firstNumber.getDecVal());
+        assertTrue( true );
     }
 }
