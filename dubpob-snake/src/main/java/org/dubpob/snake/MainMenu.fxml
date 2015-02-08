@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="207.0" prefWidth="176.0">
+         <children>
+            <Button layoutX="46.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleSinglePlayerButtonAction" text="Single Player" />
+            <Button layoutX="50.0" layoutY="68.0" mnemonicParsing="false" text="Multiplayer" />
+            <Button layoutX="59.0" layoutY="124.0" mnemonicParsing="false" text="Options" />
+            <Button layoutX="71.0" layoutY="170.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" text="Exit" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

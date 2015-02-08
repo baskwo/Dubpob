@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.dubpob.snake.controller.SnakeController">
+   <children>
+      <AnchorPane prefHeight="365.0" prefWidth="405.0">
+         <children>
+            <TableView prefHeight="365.0" prefWidth="405.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
