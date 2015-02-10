@@ -1,0 +1,10 @@
+foo(int count) {
+	txtOutput.appendText(count + " Bottle(s) of beer on the wall,"+count+"bottle(s) of beer\n");
+	txtOutput.appendText("Take one down and pass it around,");
+	txtOutput.appendText((count-1)+" bottle(s) of beer on the wall.\n");
+}
+
+for(int i = 99; i > 0; i--) {
+	foo(i);
+}
+

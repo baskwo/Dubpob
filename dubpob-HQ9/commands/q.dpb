@@ -1,1 +1,1 @@
-txtOutput.setText(txtCode.getText());
+txtOutput.appendText(txtCode.getText());

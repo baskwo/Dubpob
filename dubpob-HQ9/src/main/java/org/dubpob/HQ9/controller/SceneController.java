@@ -1,7 +1,6 @@
 package org.dubpob.HQ9.controller;
 
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.dubpob.HQ9.Program;
@@ -41,16 +40,14 @@ public class SceneController {
 			e.printStackTrace();
 		}
 		
-		txtOutput.setText(txtOutput.getText() + "\n");
-		
 		for(char c : code.toCharArray()) {
 			String filename = "commands\\" + c + ".dpb";
 			if(!Files.exists(Paths.get(filename))) {
-				txtOutput.setText(txtOutput.getText() + "\nImpossible to continue the interpretation.");
+				txtOutput.setText(txtOutput.getText() + "\nImpossible to continue the interpretation. File not found");
 				throw new Exception("File does not exist : " + filename);
 			}
-			
 			interpret.source(filename);
+			txtOutput.setText(txtOutput.getText() + "\n");
 		}
 	}
 }
