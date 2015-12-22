@@ -10,7 +10,6 @@
     <module>dubpob-matrix</module>
     <module>dubpob-base</module>
     <module>dubpob-memcache</module>
-    <module>dubpob-HQ9</module>
   </modules>
   <properties>
         <encoding>UTF-8</encoding>
