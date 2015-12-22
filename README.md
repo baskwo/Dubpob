@@ -1,4 +1,4 @@
-Dubpob [![Build Status](https://drone.io/github.com/baskwo/Dubpob/status.png)](https://drone.io/github.com/baskwo/Dubpob/latest)
+Dubpob
 ===
 
 ## Description
