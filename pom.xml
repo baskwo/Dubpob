@@ -8,10 +8,7 @@
   <modules>
     <module>dubpob-orm</module>
     <module>dubpob-matrix</module>
-    <module>dubpob-bird</module>
-    <module>dubpob-test</module>
     <module>dubpob-base</module>
-    <module>dubpob-snake</module>
     <module>dubpob-memcache</module>
     <module>dubpob-HQ9</module>
   </modules>
