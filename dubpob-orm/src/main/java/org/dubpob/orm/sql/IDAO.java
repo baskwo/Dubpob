@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface IDAO<T extends Packable & Unpackable> {
+	
     long countAll(Map<String, Object> params);
 
     void create(T t);

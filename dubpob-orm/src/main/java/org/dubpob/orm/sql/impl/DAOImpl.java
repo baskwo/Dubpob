@@ -14,10 +14,16 @@ import org.dubpob.orm.sql.Packable;
 import org.dubpob.orm.sql.Unpackable;
 
 import com.google.common.collect.Lists;
+import com.googlecode.cqengine.attribute.Attribute;
+import com.googlecode.cqengine.attribute.SimpleAttribute;
 
 import static com.google.common.base.Throwables.propagate;
 
 public class DAOImpl<T extends Packable & Unpackable> implements IDAO<T> {
+	@SuppressWarnings("rawtypes")
+	public static final Attribute<DAOImpl, String> DAO_ENTITY = new SimpleAttribute<DAOImpl, String>("entity") {
+		public String getValue(DAOImpl dao) { return dao.model.getEntity().getCanonicalName(); }};
+	
 	private Connection connection;
 	private String tableName;
 	private EntityModel model;

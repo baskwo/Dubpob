@@ -5,6 +5,7 @@ import static com.googlecode.cqengine.query.QueryFactory.equal;
 import java.lang.reflect.Field;
 
 import org.dubpob.orm.annotations.Skip;
+import org.dubpob.orm.annotations.Table;
 
 import com.googlecode.cqengine.CQEngine;
 import com.googlecode.cqengine.IndexedCollection;
@@ -16,6 +17,7 @@ import com.googlecode.cqengine.resultset.ResultSet;
 public class EntityModel {
 	private Class<?> entity = null;
 	private IndexedCollection<Metadata> metadatas = CQEngine.newInstance();
+	private String table = null;
 	
 	public static final Attribute<EntityModel, Class<?>> MODEL_CLASS = new SimpleAttribute<EntityModel, Class<?>>("class") {
         public Class<?> getValue(EntityModel model) { return model.entity; }};
@@ -23,6 +25,11 @@ public class EntityModel {
 	public EntityModel(Class<?> entity) {
 		this.entity = entity;
 		metadatas.addIndex(UniqueIndex.onAttribute(Metadata.META_NAME));
+		if(entity.getAnnotation(Table.class) != null) {
+			table = entity.getAnnotation(Table.class).name();
+		} else {
+			table = entity.getCanonicalName();
+		}
 	}
 	
 	public boolean buildMetadata() {
@@ -71,5 +78,9 @@ public class EntityModel {
 		}
 		
 		return (long)metadata.value(obj);
+	}
+	
+	public String getTable() {
+		return table;
 	}
 }
