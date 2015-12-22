@@ -1,6 +1,6 @@
 package org.dubpob.orm.pojo;
 
-import static com.google.common.base.Throwables.propagate;
+import static com.googlecode.cqengine.query.QueryFactory.equal;
 
 import java.lang.reflect.Field;
 
@@ -11,6 +11,7 @@ import com.googlecode.cqengine.IndexedCollection;
 import com.googlecode.cqengine.attribute.Attribute;
 import com.googlecode.cqengine.attribute.SimpleAttribute;
 import com.googlecode.cqengine.index.unique.UniqueIndex;
+import com.googlecode.cqengine.resultset.ResultSet;
 
 public class EntityModel {
 	private Class<?> entity = null;
@@ -26,15 +27,14 @@ public class EntityModel {
 	
 	public boolean buildMetadata() {
 		Field[] fields = entity.getDeclaredFields();
-		boolean result = true;
 		for(Field field : fields) {
 			if(field.getAnnotation(Skip.class) != null)
 				continue;
-				Metadata metadata = new Metadata(field);
-				metadatas.add(metadata);
+			Metadata metadata = new Metadata(field);
+			metadatas.add(metadata);
 			
 		}
-		return result;
+		return true;
 	}
 
 	public Class<?> getEntity() {
@@ -51,5 +51,25 @@ public class EntityModel {
 
 	public void setMetadatas(IndexedCollection<Metadata> metadatas) {
 		this.metadatas = metadatas;
+	}
+	
+	public String getPrimaryKeyColumn() {
+		Metadata metadata = null;
+		ResultSet<Metadata> rs = metadatas.retrieve(equal(Metadata.META_PRIMARY, true));
+		if(rs != null && rs.isNotEmpty()) {
+			metadata = rs.uniqueResult();
+		}
+		
+		return metadata.getColumnName();
+	}
+	
+	public long getPrimaryKey(Object obj) throws IllegalArgumentException, IllegalAccessException {
+		Metadata metadata = null;
+		ResultSet<Metadata> rs = metadatas.retrieve(equal(Metadata.META_PRIMARY, true));
+		if(rs != null && rs.isNotEmpty()) {
+			metadata = rs.uniqueResult();
+		}
+		
+		return (long)metadata.value(obj);
 	}
 }

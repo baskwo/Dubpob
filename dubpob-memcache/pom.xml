@@ -9,13 +9,17 @@
   </parent>
   <groupId>dubpob-memcache</groupId>
   <artifactId>dubpob-memcache</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <name>dubpob-memcache</name>
   <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <dependencies>
+    <dependency>
+	  <groupId>net.java.dev.jna</groupId>
+	  <artifactId>jna</artifactId>
+	  <version>4.2.1</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

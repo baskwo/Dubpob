@@ -2,8 +2,7 @@ package org.dubpob.orm.pojo.impl;
 
 import org.dubpob.orm.annotations.Entity;
 import org.dubpob.orm.exceptions.EntityAlreadyMappedException;
-import org.dubpob.orm.exceptions.EntityNotMappedException;
-import org.dubpob.orm.pojo.EntityFactory;
+import org.dubpob.orm.pojo.IEntityFactory;
 import org.dubpob.orm.pojo.EntityModel;
 
 import com.googlecode.cqengine.CQEngine;
@@ -14,7 +13,7 @@ import com.googlecode.cqengine.resultset.ResultSet;
 import static com.google.common.base.Throwables.propagate;
 import static com.googlecode.cqengine.query.QueryFactory.*;
 
-public class SimpleEntityFactory implements EntityFactory{
+public class SimpleEntityFactory implements IEntityFactory{
 	private IndexedCollection<EntityModel> models = CQEngine.newInstance();
 	
 	public SimpleEntityFactory() {
@@ -33,9 +32,8 @@ public class SimpleEntityFactory implements EntityFactory{
 	public boolean createModel(Class<?> entity) {
 		if(entity.getAnnotation(Entity.class) != null) {
 			EntityModel model = new EntityModel(entity);
-			if(!model.buildMetadata())
-				return false;
-			return register(model);
+			if(model.buildMetadata())
+				return register(model);
 		}
 		return false;
 	}
@@ -45,9 +43,6 @@ public class SimpleEntityFactory implements EntityFactory{
 		ResultSet<EntityModel> rs = models.retrieve(equal(EntityModel.MODEL_CLASS,entity));
 		if(rs != null && rs.isNotEmpty())
 			em = rs.uniqueResult();
-		else {
-			propagate(new EntityNotMappedException());
-		}
 		return em;
 	}
 
