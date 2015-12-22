@@ -29,7 +29,7 @@ public class AppTest extends TestCase {
     	assertTrue(factory.createModel(Dummy.class));
     	
     	EntityModel model = factory.getModel(Dummy.class);
-    	assertEquals(1, model.getMetadatas().size());
+    	assertEquals(2, model.getMetadatas().size());
     }
     
     @Entity
