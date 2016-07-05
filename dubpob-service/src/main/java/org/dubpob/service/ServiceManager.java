@@ -27,8 +27,12 @@ public class ServiceManager {
 	}
 	
 	public void start() {
-		for(Service service : services) {
-			service.start();
+		for(final Service service : services) {
+			new Thread(new Runnable() {
+				public void run() {
+					service.start();
+				}
+			}).start();
 		}
 	}
 	
